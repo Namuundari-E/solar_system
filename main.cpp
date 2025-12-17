@@ -873,6 +873,10 @@ void display() {
         glRotatef(p.textureRotation, 0.0f, 1.0f, 0.0f); // NEW: Apply texture rotation first
         glRotatef(p.axisRotation, 0.0f, 1.0f, 0.0f); // Then apply axis rotation
 
+        //  Scale focused planet 2×
+        if (focusedPlanetIndex == (int)i) {
+            glScalef(3.0f, 3.0f, 3.0f);
+        }
         // Set material properties
         GLfloat mat_ambient[] = {0.3f, 0.3f, 0.3f, 1.0f};
         GLfloat mat_diffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
