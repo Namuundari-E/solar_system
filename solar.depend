@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1765975939 source:c:\users\user\desktop\com_graphic\solar\main.cpp
+	<GL/glut.h>
+	<GL/glu.h>
+	<cmath>
+	<iostream>
+	<vector>
+	<string>
+	"stb_image.h"
+
+1761803874 c:\users\user\downloads\freeglut-mingw-3.0.0-1.mp\freeglut\include\gl\glut.h
+	"freeglut_std.h"
+
+1761803874 c:\users\user\downloads\freeglut-mingw-3.0.0-1.mp\freeglut\include\gl\freeglut_std.h
+	<windows.h>
+	<EGL/egl.h>
+	<GLES/gl.h>
+	<GLES2/gl2.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1763643579 c:\users\user\desktop\com_graphic\solar\stb_image.h
+	"stb_image.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdarg.h>
+	<stddef.h>
+	<stdlib.h>
+	<string.h>
+	<limits.h>
+	<math.h>
+	<stdio.h>
+	<assert.h>
+	<stdint.h>
+	<emmintrin.h>
+	<intrin.h>
+	<arm_neon.h>
+
