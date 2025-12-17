@@ -1,11 +1,14 @@
 # depslib dependency file v1.0
-1765975939 source:c:\users\user\desktop\com_graphic\solar\main.cpp
+1766003412 source:c:\users\user\desktop\com_graphic\solar\main.cpp
 	<GL/glut.h>
 	<GL/glu.h>
 	<cmath>
 	<iostream>
 	<vector>
 	<string>
+	<sstream>
+	<iomanip>
+	<cstdlib>
 	"stb_image.h"
 
 1761803874 c:\users\user\downloads\freeglut-mingw-3.0.0-1.mp\freeglut\include\gl\glut.h
