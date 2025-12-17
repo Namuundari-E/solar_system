@@ -567,35 +567,47 @@ void drawRings(float innerRadius, float outerRadius, GLuint textureID) {
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     glBindTexture(GL_TEXTURE_2D, textureID);
 
-    glPushMatrix();
-    glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
+    const int segments = 180;
 
-    int segments = 100;
     glBegin(GL_QUAD_STRIP);
     for (int i = 0; i <= segments; i++) {
         float angle = 2.0f * M_PI * i / segments;
         float c = cos(angle);
         float s = sin(angle);
+
+        // Texture wraps around ring circumference
         float u = (float)i / segments;
 
+        // Inner edge
         glTexCoord2f(u, 0.0f);
-        glVertex3f(innerRadius * c, innerRadius * s, 0.0f);
+        glVertex3f(innerRadius * c, 0.0f, innerRadius * s);
+
+        // Outer edge
         glTexCoord2f(u, 1.0f);
-        glVertex3f(outerRadius * c, outerRadius * s, 0.0f);
+        glVertex3f(outerRadius * c, 0.0f, outerRadius * s);
     }
     glEnd();
 
-    glPopMatrix();
     glDisable(GL_BLEND);
     glDisable(GL_TEXTURE_2D);
 }
+
+
 
 // Draw textured sphere
 void drawTexturedSphere(float radius, GLuint textureID) {
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, textureID);
+
+    glPushMatrix();
+
+    // 🔧 FIX: rotate texture orientation
+    // This aligns equirectangular textures correctly
+    glRotatef(-90.0f, 1.0f, 0.0f, 0.0f); // FIX vertical flip
+    glRotatef(180.0f, 0.0f, 1.0f, 0.0f); // FIX longitude direction (optional but recommended)
 
     GLUquadric* quad = gluNewQuadric();
     gluQuadricTexture(quad, GL_TRUE);
@@ -603,8 +615,10 @@ void drawTexturedSphere(float radius, GLuint textureID) {
     gluSphere(quad, radius, 48, 48);
     gluDeleteQuadric(quad);
 
+    glPopMatrix();
     glDisable(GL_TEXTURE_2D);
 }
+
 
 // Draw 2D text on screen
 void drawText(float x, float y, const char* text, void* font = GLUT_BITMAP_HELVETICA_12) {
